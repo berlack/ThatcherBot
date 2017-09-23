@@ -38,6 +38,45 @@ module Bot
   load_modules(:DiscordEvents, 'events')
   load_modules(:DiscordCommands, 'commands')
 
+  BOT.message(content: 'merhaba') do |event|
+    if event.user.id == 107292203696525312
+      event.respond 'Oooo müdür bey hoşgeldiniz!'
+      puts "Kodbilen'e selam çakıldı"
+    elsif event.user.id == Bot::CONFIG.owner
+      a = rand(1..3)
+      if a==1
+        event.send 'Usta'
+      elsif a==2
+        event.send 'Yaparım'
+      elsif a==3
+        event.send 'Tamam'
+      end
+      puts event.message.author.name + " şşşşşş hooooooo"
+    elsif event.user.id == 307546377125101568
+        event.respond 'kes len mq'
+        puts "Ağlatıldı"
+    elsif
+      event.send 'Sana da merhaba ' + event.message.author.name
+      puts event.message.author.name + "'a selam verildi"
+    end
+  end
+
+  BOT.message(content: 'Merhaba') do |event|
+    if event.user.id == 107292203696525312
+      event.respond 'Oooo müdür bey hoşgeldiniz!'
+      puts "Kodbilen'e selam çakıldı"
+    elsif event.user.id == Bot::CONFIG.owner
+        event.respond 'Sana baba diyebilir miyim?'
+        puts "Selamlandınız"
+    elsif event.user.id == 307546377125101568
+        event.respond 'AĞLA AMK KAŞARI KUDUUUUUR'
+        puts "Ağlatıldı"
+    elsif
+      event.send 'Sana da merhaba ' + event.message.author.name
+      puts event.message.author.name + "'a selam verildi"
+    end
+  end
+
   # Run the bot
   BOT.run
 end
