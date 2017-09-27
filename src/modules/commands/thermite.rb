@@ -4,10 +4,9 @@ module Bot::DiscordCommands
     command :thermite do |event|
         channel = event.user.voice_channel
         voiceBot = event.bot.voice_connect(channel)
-        voice_bot = event.voice
-        voice_bot.play_file 'data/bigfuckinghole.mp3'
         event.send 'A really big fuckin hole coming right up!'
-        sleep(1)
+        event.voice.play_file('data/bigfuckinghole.mp3')
+        event.voice.destroy
         m = event.send '```
 ------------------------------------------
 |                                        |
