@@ -3,11 +3,15 @@ module Bot::DiscordCommands
     extend Discordrb::Commands::CommandContainer
     command :thermite do |event|
         channel = event.user.voice_channel
-        voiceBot = event.bot.voice_connect(channel)
-        event.send 'A really big fuckin hole coming right up!'
-        event.voice.play_file('data/bigfuckinghole.mp3')
-        event.voice.destroy
-        m = event.send '```
+        if channel == nil
+          event.send 'Bir sohbet odasına girmelisin.'
+          puts event.message.author.name + " couldn't blow a hole in the wall"
+        else
+          voiceBot = event.bot.voice_connect(channel)
+          event.send 'A really big fuckin hole coming right up!'
+          event.voice.play_file('data/bigfuckinghole.mp3')
+          event.voice.destroy
+          m = event.send '```
 ------------------------------------------
 |                                        |
 |                                        |
@@ -20,8 +24,8 @@ module Bot::DiscordCommands
 |                                        |
 ------------------------------------------
 ```'
-        sleep(0.4)
-        m.edit '```
+          sleep(0.4)
+          m.edit '```
 ------------------------------------------
 |                                        |
 |                                        |
@@ -34,8 +38,8 @@ module Bot::DiscordCommands
 |                                        |
 ------------------------------------------
 ```'
-        sleep(0.4)
-        m.edit '```
+          sleep(0.4)
+          m.edit '```
 ------------------------------------------
 |                                        |
 |                                        |
@@ -48,8 +52,8 @@ module Bot::DiscordCommands
 |                                        |
 ------------------------------------------
 ```'
-        sleep(0.4)
-        m.edit '```
+          sleep(0.4)
+          m.edit '```
 ------------------------------------------
 |                                        |
 |                                        |
@@ -62,8 +66,8 @@ module Bot::DiscordCommands
 |                                        |
 ------------------------------------------
 ```'
-        sleep(0.4)
-        m.edit '```
+          sleep(0.4)
+          m.edit '```
 ------------------------------------------
 |                                        |
 |                                        |
@@ -76,8 +80,8 @@ module Bot::DiscordCommands
 |                                        |
 ------------------------------------------
 ```'
-        sleep(0.4)
-        m.edit '```
+          sleep(0.4)
+          m.edit '```
 ------------------------------------------
 |                                        |
 |                                        |
@@ -90,8 +94,8 @@ module Bot::DiscordCommands
 |                                        |
 ------------------------------------------
 ```'
-        sleep(0.4)
-        m.edit '```
+          sleep(0.4)
+          m.edit '```
 ------------------------------------------
 |                __    _                 |
 |               /  \__/ \_		       |
@@ -104,7 +108,8 @@ module Bot::DiscordCommands
 |                                        |
 ------------------------------------------
 ```'
-        puts event.message.author.name + " blowed a hole in the wall"
+          puts event.message.author.name + " blowed a hole in the wall"
+        end
     end
   end
 end
